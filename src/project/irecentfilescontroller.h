@@ -34,7 +34,7 @@ class QPixmap;
 namespace mu::project {
 class IRecentFilesController : MODULE_EXPORT_INTERFACE
 {
-    INTERFACE_ID(IRecentFilesProvider)
+    INTERFACE_ID(IRecentFilesController)
 
 public:
     virtual ~IRecentFilesController() = default;

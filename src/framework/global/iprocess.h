@@ -30,7 +30,7 @@
 namespace mu {
 class IProcess : MODULE_EXPORT_INTERFACE
 {
-    INTERFACE_ID(mu::IProcess)
+    INTERFACE_ID(IProcess)
 
 public:
     virtual ~IProcess() = default;

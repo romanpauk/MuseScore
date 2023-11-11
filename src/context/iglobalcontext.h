@@ -30,7 +30,7 @@
 namespace mu::context {
 class IGlobalContext : MODULE_EXPORT_INTERFACE
 {
-    INTERFACE_ID(mu::context::IGlobalContext)
+    INTERFACE_ID(IGlobalContext)
 
 public:
     virtual ~IGlobalContext() = default;

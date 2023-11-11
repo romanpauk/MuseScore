@@ -33,7 +33,7 @@
 namespace mu::draw {
 class IFontProvider : MODULE_EXPORT_INTERFACE
 {
-    INTERFACE_ID(mu::draw::IFontProvider)
+    INTERFACE_ID(IFontProvider)
 
 public:
     virtual ~IFontProvider() = default;

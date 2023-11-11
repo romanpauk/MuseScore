@@ -32,6 +32,16 @@
 #include "imoduleinterface.h"
 
 namespace mu::modularity {
+
+template< typename I > constexpr InterfaceInfo getInterfaceInfo() { 
+    // This function does not reqire declaration of I to be available, as it does not access anything
+    // inside I namespace. This has the following consequences:
+    //  1) INTERFACE_ID() macro can be removed.
+    //  2) INJECT() needs only forward declarations, thus headers with the interfaces to be injected
+    //      can be removed
+    return InterfaceInfo(interfaceName(__PRETTY_FUNCTION__), moduleNameByInterface(__PRETTY_FUNCTION__), false);
+}
+
 class ModulesIoC
 {
 public:
@@ -46,7 +56,7 @@ public:
             assert(c);
             return;
         }
-        registerService(module, I::interfaceInfo(), std::shared_ptr<IModuleInterface>(), c);
+        registerService(module, getInterfaceInfo<I>(), std::shared_ptr<IModuleInterface>(), c);
     }
 
     template<class I>
@@ -76,7 +86,7 @@ public:
             assert(p);
             return;
         }
-        registerService(module, I::interfaceInfo(), std::static_pointer_cast<IModuleInterface>(p), nullptr);
+        registerService(module, getInterfaceInfo<I>(), std::static_pointer_cast<IModuleInterface>(p), nullptr);
     }
 
     // Register Internal
@@ -87,7 +97,7 @@ public:
             assert(c);
             return;
         }
-        registerService(module, I::interfaceInfo(), std::shared_ptr<IModuleInterface>(), c);
+        registerService(module, getInterfaceInfo<I>(), std::shared_ptr<IModuleInterface>(), c);
     }
 
     template<class I>
@@ -117,14 +127,14 @@ public:
             assert(p);
             return;
         }
-        registerService(module, I::interfaceInfo(), std::static_pointer_cast<IModuleInterface>(p), nullptr);
+        registerService(module, getInterfaceInfo<I>(), std::static_pointer_cast<IModuleInterface>(p), nullptr);
     }
 
     // Unregister
     template<class I>
     void unregister(const std::string& /*module*/)
     {
-        unregisterService(I::interfaceInfo());
+        unregisterService(getInterfaceInfo<I>());
     }
 
     template<class I>
@@ -139,7 +149,7 @@ public:
     template<class I>
     std::shared_ptr<I> resolve(const std::string_view& module, const std::string_view& callInfo = std::string_view())
     {
-        std::shared_ptr<IModuleInterface> p = doResolvePtrByInfo(module, I::interfaceInfo(), callInfo);
+        std::shared_ptr<IModuleInterface> p = doResolvePtrByInfo(module, getInterfaceInfo<I>(), callInfo);
 #ifndef NDEBUG
         return std::dynamic_pointer_cast<I>(p);
 #else
@@ -150,9 +160,9 @@ public:
     template<class I>
     std::shared_ptr<I> resolveRequiredImport(const std::string& module)
     {
-        std::shared_ptr<IModuleInterface> p = doResolvePtrByInfo(module, I::interfaceInfo(), std::string_view());
+        std::shared_ptr<IModuleInterface> p = doResolvePtrByInfo(module, getInterfaceInfo<I>(), std::string_view());
         if (!p) {
-            std::cerr << "not found implementation for interface: " << I::interfaceInfo().id << std::endl;
+            std::cerr << "not found implementation for interface: " << getInterfaceInfo<I>().id << std::endl;
             assert(false);
         }
 #ifndef NDEBUG

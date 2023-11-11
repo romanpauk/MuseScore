@@ -75,6 +75,62 @@ constexpr std::string_view moduleNameBySig(const std::string_view& sig)
     return module;
 }
 
+constexpr std::string_view moduleNameByInterface(const std::string_view& sig)
+{
+    //! NOTE Signature should be like
+    //! constexpr mu::modularity::InterfaceInfo mu::modularity::getInterfaceInfo() [with I = mu::update::IUpdateConfiguration]
+    
+    // TODO: 'module' concept is wide
+    //  mu::ICryptographicHash (module should be ICryptographisHash)
+    //  mu::audio::synth::ISynthResolver (module should be audio::synth)
+
+    constexpr std::string_view InterfaceBegin("[with ");
+    constexpr std::string_view Colon("::");
+
+    std::size_t beginInterface = sig.find(InterfaceBegin);
+    if (beginInterface == std::string_view::npos) {
+        return sig;
+    }
+
+    std::size_t beginModule = sig.find(Colon, beginInterface);
+    if (beginModule == std::string_view::npos) {
+        return sig;
+    }
+    beginModule += 2;
+
+    std::size_t endModule = sig.find(Colon, beginModule);
+    if (endModule == std::string_view::npos) {
+        std::string_view module = sig.substr(beginModule, sig.size() - beginModule - 1); // -1 is for the ']'
+        return module;
+    }
+    
+    std::string_view module = sig.substr(beginModule, endModule - beginModule);
+    return module;
+}
+
+inline std::string_view interfaceName(const std::string_view& sig)
+{
+    //! NOTE Signature should be like
+    //! constexpr mu::modularity::InterfaceInfo mu::modularity::getInterfaceInfo() [with I = mu::update::IUpdateConfiguration]
+
+    constexpr std::string_view InterfaceEnd("]");
+    constexpr std::string_view Colon("::");
+
+    std::size_t endInterface = sig.find(InterfaceEnd);
+    if (endInterface == std::string_view::npos) {
+        return sig;
+    }
+
+    std::size_t beginInterface = sig.rfind(Colon, endInterface);
+    if (beginInterface == std::string_view::npos) {
+        return sig;
+    }
+    beginInterface += 2;
+
+    std::string_view interface = sig.substr(beginInterface, endInterface - beginInterface);
+    return interface;
+}
+
 #else
 inline std::string_view moduleNameBySig(const std::string_view& sig)
 {
@@ -101,6 +157,61 @@ inline std::string_view moduleNameBySig(const std::string_view& sig)
     return module;
 }
 
+inline std::string_view moduleNameByInterface(const std::string_view& sig)
+{
+    //! NOTE Signature should be like
+    //! constexpr mu::modularity::InterfaceInfo mu::modularity::getInterfaceInfo() [with I = mu::update::IUpdateConfiguration]
+    
+    // TODO: 'module' concept is wide
+    //  mu::ICryptographicHash (module should be ICryptographisHash)
+    //  mu::audio::synth::ISynthResolver (module should be audio::synth)
+
+    static const std::string_view InterfaceBegin("[with ");
+    static const std::string_view Colon("::");
+
+    std::size_t beginInterface = sig.find(InterfaceBegin);
+    if (beginInterface == std::string_view::npos) {
+        return sig;
+    }
+
+    std::size_t beginModule = sig.find(Colon, beginInterface);
+    if (beginModule == std::string_view::npos) {
+        return sig;
+    }
+    beginModule += 2;
+
+    std::size_t endModule = sig.find(Colon, beginModule);
+    if (endModule == std::string_view::npos) {
+        std::string_view module = sig.substr(beginModule, sig.size() - beginModule - 1); // -1 is for the ']'
+        return module;
+    }
+    
+    std::string_view module = sig.substr(beginModule, endModule - beginModule);
+    return module;
+}
+
+inline std::string_view interfaceName(const std::string_view& sig)
+{
+    //! NOTE Signature should be like
+    //! constexpr mu::modularity::InterfaceInfo mu::modularity::getInterfaceInfo() [with I = mu::update::IUpdateConfiguration]
+
+    static const std::string_view InterfaceEnd("]");
+    static const std::string_view Colon("::");
+
+    std::size_t endInterface = sig.find(InterfaceEnd);
+    if (endInterface == std::string_view::npos) {
+        return sig;
+    }
+
+    std::size_t beginInterface = sig.rfind(Colon, endInterface);
+    if (beginInterface == std::string_view::npos) {
+        return sig;
+    }
+    beginInterface += 2;
+
+    std::string_view interface = sig.substr(beginInterface, endInterface - beginInterface);
+    return interface;
+}
 #endif
 }
 

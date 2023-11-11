@@ -32,7 +32,7 @@
 namespace mu::appshell {
 class IAppShellConfiguration : MODULE_EXPORT_INTERFACE
 {
-    INTERFACE_ID(IAppshellConfiguration)
+    INTERFACE_ID(IAppShellConfiguration)
 
 public:
     virtual ~IAppShellConfiguration() = default;

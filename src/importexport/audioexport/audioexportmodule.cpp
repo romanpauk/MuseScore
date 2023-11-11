@@ -46,7 +46,7 @@ void AudioExportModule::registerExports()
 {
     m_configuration = std::make_shared<AudioExportConfiguration>();
 
-    ioc()->registerExport<AudioExportConfiguration>(moduleName(), m_configuration);
+    ioc()->registerExport<IAudioExportConfiguration>(moduleName(), m_configuration);
 }
 
 void AudioExportModule::resolveImports()

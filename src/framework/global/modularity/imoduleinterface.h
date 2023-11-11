@@ -69,6 +69,7 @@ struct IModuleInternalCreator : public IModuleCreator {
 };
 }
 
+#if 0
 #ifndef IOC_NO_STRING_VIEW_CONSTEXPR_METHODS
 
 #define INTERFACE_ID(id)                                                \
@@ -91,11 +92,15 @@ public:                                                                 \
 private:                                                                \
 
 #endif
+#endif
+
+#define INTERFACE_ID(...)
 
 #define MODULE_EXPORT_INTERFACE public mu::modularity::IModuleExportInterface
 #define MODULE_EXPORT_CREATOR public mu::modularity::IModuleExportCreator
 
-#define MODULE_INTERNAL_INTERFACE public mu::modularity::IModuleInternalInterface
-#define MODULE_INTERNAL_CREATOR public mu::modularity::IModuleInternalCreator
+// TODO: I don't understand what those mean
+//#define MODULE_INTERNAL_INTERFACE public mu::modularity::IModuleInternalInterface
+//#define MODULE_INTERNAL_CREATOR public mu::modularity::IModuleInternalCreator
 
 #endif // MU_MODULARITY_IMODULEINTERFACE_H

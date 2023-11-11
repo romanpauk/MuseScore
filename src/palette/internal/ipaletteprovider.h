@@ -32,7 +32,7 @@
 namespace mu::palette {
 class IPaletteProvider : MODULE_EXPORT_INTERFACE
 {
-    INTERFACE_ID(IPaletteAdapter)
+    INTERFACE_ID(IPaletteProvider)
 
 public:
     virtual ~IPaletteProvider() = default;

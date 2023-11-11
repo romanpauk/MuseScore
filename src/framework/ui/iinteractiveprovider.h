@@ -34,7 +34,7 @@ class QWindow;
 namespace mu::ui {
 class IInteractiveProvider : MODULE_EXPORT_INTERFACE
 {
-    INTERFACE_ID(ILaunchProvider)
+    INTERFACE_ID(IInteractiveProvider)
 
 public:
     virtual ~IInteractiveProvider() = default;
