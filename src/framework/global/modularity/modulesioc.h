@@ -56,7 +56,7 @@ public:
             assert(c);
             return;
         }
-        registerService(module, getInterfaceInfo<I>(), std::shared_ptr<IModuleInterface>(), c);
+        registerService(module, getInterfaceInfo<I>(), std::shared_ptr<void>(), c);
     }
 
     template<class I>
@@ -75,7 +75,7 @@ public:
         if (!p) {
             assert(p);
             return;
-        }
+        }        
         registerExport<I>(module, std::shared_ptr<I>(p, [](I*) {}));
     }
 
@@ -86,7 +86,7 @@ public:
             assert(p);
             return;
         }
-        registerService(module, getInterfaceInfo<I>(), std::static_pointer_cast<IModuleInterface>(p), nullptr);
+        registerService(module, getInterfaceInfo<I>(), p, nullptr);
     }
 
     // Register Internal
@@ -97,7 +97,7 @@ public:
             assert(c);
             return;
         }
-        registerService(module, getInterfaceInfo<I>(), std::shared_ptr<IModuleInterface>(), c);
+        registerService(module, getInterfaceInfo<I>(), std::shared_ptr<void>(), c);
     }
 
     template<class I>
@@ -127,7 +127,7 @@ public:
             assert(p);
             return;
         }
-        registerService(module, getInterfaceInfo<I>(), std::static_pointer_cast<IModuleInterface>(p), nullptr);
+        registerService(module, getInterfaceInfo<I>(), p, nullptr);
     }
 
     // Unregister
@@ -149,27 +149,27 @@ public:
     template<class I>
     std::shared_ptr<I> resolve(const std::string_view& module, const std::string_view& callInfo = std::string_view())
     {
-        std::shared_ptr<IModuleInterface> p = doResolvePtrByInfo(module, getInterfaceInfo<I>(), callInfo);
-#ifndef NDEBUG
-        return std::dynamic_pointer_cast<I>(p);
-#else
-        return std::static_pointer_cast<I>(p);
-#endif
+        std::shared_ptr<void> p = doResolvePtrByInfo(module, getInterfaceInfo<I>(), callInfo);
+        // TODO: both static/dynamic cast does not work with forward-declared types.
+        // But the check done here is in fact done when the type is registered, as it can't happen
+        // that for type I, an pointer to unrelated type J would be registered.
+        // The key is that all the registration methods need to work with the equivalent
+        //      getInterfaceInfo<I> and std::shared_ptr<I>. It is also important to avoid any casts 
+        // during the registration as that could backfire with multiple inheritance. If those rules
+        // are followed (can be enforced by design / tests), than the reinterpret_cast<> done here
+        // from I* to void* and from void* to I* has to be correct.
+        return std::reinterpret_pointer_cast<I>(p);
     }
 
     template<class I>
     std::shared_ptr<I> resolveRequiredImport(const std::string& module)
     {
-        std::shared_ptr<IModuleInterface> p = doResolvePtrByInfo(module, getInterfaceInfo<I>(), std::string_view());
+        std::shared_ptr<void> p = doResolvePtrByInfo(module, getInterfaceInfo<I>(), std::string_view());
         if (!p) {
             std::cerr << "not found implementation for interface: " << getInterfaceInfo<I>().id << std::endl;
             assert(false);
         }
-#ifndef NDEBUG
-        return std::dynamic_pointer_cast<I>(p);
-#else
-        return std::static_pointer_cast<I>(p);
-#endif
+        return std::reinterpret_pointer_cast<I>(p);
     }
 
     void reset()
@@ -188,7 +188,7 @@ private:
 
     void registerService(const std::string& module,
                          const InterfaceInfo& info,
-                         std::shared_ptr<IModuleInterface> p,
+                         std::shared_ptr<void> p,
                          IModuleCreator* c)
     {
         auto foundIt = m_map.find(info.id);
@@ -204,9 +204,11 @@ private:
         inj.c = c;
         inj.p = p;
         m_map[info.id] = inj;
+
+        
     }
 
-    std::shared_ptr<IModuleInterface> doResolvePtrByInfo(const std::string_view& usageModule,
+    std::shared_ptr<void> doResolvePtrByInfo(const std::string_view& usageModule,
                                                          const InterfaceInfo& info,
                                                          const std::string_view& callInfo)
     {
@@ -246,7 +248,7 @@ private:
     struct Service {
         IModuleCreator* c = nullptr;
         std::string sourceModule;
-        std::shared_ptr<IModuleInterface> p;
+        std::shared_ptr<void> p;
     };
 
     std::map<std::string_view, Service > m_map;
@@ -255,7 +257,7 @@ private:
 template<class T>
 struct Creator : MODULE_EXPORT_CREATOR
 {
-    std::shared_ptr<IModuleInterface> create() { return std::make_shared<T>(); }
+    std::shared_ptr<void> create() { return std::make_shared<T>(); }
 };
 }
 
