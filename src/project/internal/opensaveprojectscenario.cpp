@@ -26,6 +26,9 @@
 #include "engraving/infrastructure/mscio.h"
 #include "projecterrors.h"
 
+#include "cloud/musescorecom/imusescorecomservice.h"
+#include "cloud/audiocom/iaudiocomservice.h"
+
 using namespace mu;
 using namespace mu::framework;
 using namespace mu::project;

@@ -21,6 +21,7 @@
  */
 #include "workspacemanager.h"
 
+#include "io/ifilesystem.h"
 #include "log.h"
 
 using namespace mu;

@@ -26,6 +26,7 @@
 #include "progress.h"
 
 #include "cloud/cloudtypes.h"
+#include "cloud/iauthorizationservice.h"
 
 class QIODevice;
 class QString;

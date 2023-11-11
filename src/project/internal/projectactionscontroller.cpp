@@ -37,6 +37,10 @@
 #include "engraving/engravingerrors.h"
 #include "network/networkerrors.h"
 #include "projecterrors.h"
+#include "multiinstances/imultiinstancesprovider.h"
+#include "cloud/musescorecom/imusescorecomservice.h"
+#include "cloud/audiocom/iaudiocomservice.h"
+#include "print/iprintprovider.h"
 
 #include "log.h"
 

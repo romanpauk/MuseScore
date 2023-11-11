@@ -21,6 +21,7 @@
  */
 #include "projectpropertiesmodel.h"
 
+#include "iinteractive.h"
 #include "translation.h"
 #include "log.h"
 

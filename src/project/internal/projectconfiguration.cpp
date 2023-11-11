@@ -29,6 +29,9 @@
 #include "settings.h"
 
 #include "engraving/infrastructure/mscio.h"
+#include "global/iglobalconfiguration.h"
+#include "accessibility/iaccessibilityconfiguration.h"
+#include "languages/ilanguagesservice.h"
 
 #include "log.h"
 

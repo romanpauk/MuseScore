@@ -25,10 +25,12 @@
 #include "async/asyncable.h"
 
 #include "modularity/ioc.h"
-#include "iglobalconfiguration.h"
 
 #include "../iupdateconfiguration.h"
 
+namespace mu::framework {
+class IGlobalConfiguration;
+}
 namespace mu::update {
 class UpdateConfiguration : public IUpdateConfiguration, public async::Asyncable
 {

@@ -23,11 +23,13 @@
 #define MU_PROJECT_TEMPLATEPAINTVIEW_H
 
 #include "modularity/ioc.h"
-#include "project/iprojectcreator.h"
 #include "notation/view/abstractnotationpaintview.h"
-#include "shortcuts/ishortcutsregister.h"
 
+namespace mu::shortcuts {
+class IShortcutsRegister;
+}
 namespace mu::project {
+class IProjectCreator;
 class TemplatePaintView : public notation::AbstractNotationPaintView
 {
     Q_OBJECT

@@ -28,28 +28,44 @@
 
 #include "modularity/ioc.h"
 #include "iinteractive.h"
-#include "context/iglobalcontext.h"
+
 #include "actions/actionable.h"
-#include "actions/iactionsdispatcher.h"
-#include "multiinstances/imultiinstancesprovider.h"
-#include "cloud/musescorecom/imusescorecomservice.h"
-#include "cloud/audiocom/iaudiocomservice.h"
-#include "playback/iplaybackcontroller.h"
-#include "print/iprintprovider.h"
-#include "inotationreadersregister.h"
-#include "iopensaveprojectscenario.h"
-#include "io/ifilesystem.h"
-#include "internal/iexportprojectscenario.h"
-#include "notation/inotationconfiguration.h"
 
 #include "async/asyncable.h"
 
-#include "iprojectconfiguration.h"
-#include "iprojectcreator.h"
-#include "irecentfilescontroller.h"
-#include "iprojectautosaver.h"
-
+namespace mu::action {
+class IActionsDispatcher;
+}
+namespace mu::cloud {
+class IMuseScoreComService;
+class IAudioComService;
+}
+namespace mu::context {
+class IGlobalContext;
+}
+namespace mu::io {
+class IFileSystem;
+}
+namespace mu::mi {
+class IMultiInstancesProvider;
+}
+namespace mu::notation {
+class INotationConfiguration;
+}
+namespace mu::playback {
+class IPlaybackController;
+}
+namespace mu::print {
+class IPrintProvider;
+}
 namespace mu::project {
+class ProjectConfiguration;
+class INotationReadersRegister;
+class IProjectCreator;
+class IRecentFilesController;
+class IProjectAutoSaver;
+class IOpenSaveProjectScenario;
+class IExportProjectScenario;
 class ProjectActionsController : public IProjectFilesController, public QObject, public actions::Actionable, public async::Asyncable
 {
     INJECT(IProjectConfiguration, configuration)

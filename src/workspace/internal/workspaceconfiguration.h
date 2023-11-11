@@ -24,9 +24,11 @@
 
 #include "../iworkspaceconfiguration.h"
 #include "modularity/ioc.h"
-#include "iglobalconfiguration.h"
 #include "async/asyncable.h"
 
+namespace mu::framework {
+class IGlobalConfiguration;
+}
 namespace mu::workspace {
 class WorkspaceConfiguration : public IWorkspaceConfiguration, public async::Asyncable
 {

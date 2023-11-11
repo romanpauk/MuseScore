@@ -26,13 +26,16 @@
 #include "iopensaveprojectscenario.h"
 
 #include "modularity/ioc.h"
-#include "iprojectconfiguration.h"
-#include "global/iinteractive.h"
 
-#include "cloud/musescorecom/imusescorecomservice.h"
-#include "cloud/audiocom/iaudiocomservice.h"
-
+namespace mu::cloud {
+class IMuseScoreComService;
+class IAudioComService;
+}
+namespace mu::framework {
+class IInteractive;
+}
 namespace mu::project {
+class IProjectConfiguration;
 class OpenSaveProjectScenario : public IOpenSaveProjectScenario
 {
     INJECT(IProjectConfiguration, configuration)

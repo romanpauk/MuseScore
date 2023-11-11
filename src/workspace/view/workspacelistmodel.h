@@ -26,12 +26,15 @@
 #include <QAbstractListModel>
 
 #include "modularity/ioc.h"
-#include "iworkspacemanager.h"
-#include "iinteractive.h"
 
 #include "async/asyncable.h"
 
+namespace mu::framework {
+class IInteractive;
+}
 namespace mu::workspace {
+class IWorkspace;
+class IWorkspaceManager;
 class WorkspaceListModel : public QAbstractListModel, public async::Asyncable
 {
     Q_OBJECT
@@ -60,9 +63,9 @@ signals:
     void selectedWorkspaceChanged(QVariant selectedWorkspace);
 
 private:
-    void setSelectedWorkspace(IWorkspacePtr workspace);
+    void setSelectedWorkspace(std::shared_ptr<IWorkspace> workspace);
 
-    QVariantMap workspaceToObject(IWorkspacePtr workspace) const;
+    QVariantMap workspaceToObject(std::shared_ptr<IWorkspace> workspace) const;
     bool isIndexValid(int index) const;
 
     enum Roles {
@@ -71,8 +74,8 @@ private:
         RoleIsRemovable
     };
 
-    QList<IWorkspacePtr> m_workspaces;
-    IWorkspacePtr m_selectedWorkspace;
+    QList<std::shared_ptr<IWorkspace>> m_workspaces;
+    std::shared_ptr<IWorkspace> m_selectedWorkspace;
 };
 }
 

@@ -29,6 +29,8 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
+#include "io/ifilesystem.h"
+
 #include "../updateerrors.h"
 #include "types/version.h"
 #include "muversion.h"

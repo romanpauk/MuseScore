@@ -26,13 +26,17 @@
 
 #include "modularity/ioc.h"
 
-#include "project/iprojectconfiguration.h"
-#include "project/iprojectcreator.h"
 #include "notation/notationtypes.h"
-#include "context/iglobalcontext.h"
-#include "notation/iinstrumentsrepository.h"
 
+namespace mu::context {
+class IGlobalContext;
+}
+namespace mu::notation {
+class IInstrumentsRepository;
+}
 namespace mu::project {
+class IProjectConfiguration;
+class IProjectCreator;
 class NewScoreModel : public QObject
 {
     Q_OBJECT

@@ -23,11 +23,13 @@
 #define MU_WORKSPACE_WORKSPACEUIACTIONS_H
 
 #include "framework/ui/iuiactionsmodule.h"
-#include "workspaceactioncontroller.h"
 #include "modularity/ioc.h"
-#include "context/iuicontextresolver.h"
 
+namespace mu::context {
+class IUiContextResolver;
+}
 namespace mu::workspace {
+class WorkspaceActionController;
 class WorkspaceUiActions : public ui::IUiActionsModule
 {
     INJECT(context::IUiContextResolver, uicontextResolver)

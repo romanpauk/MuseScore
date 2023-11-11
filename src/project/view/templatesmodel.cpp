@@ -21,6 +21,7 @@
  */
 #include "templatesmodel.h"
 
+#include "internal/itemplatesrepository.h"
 #include "log.h"
 
 using namespace mu::project;

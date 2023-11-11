@@ -27,10 +27,13 @@
 #include "async/asyncable.h"
 
 #include "modularity/ioc.h"
-#include "iprojectconfiguration.h"
-#include "cloud/musescorecom/imusescorecomservice.h"
+#include "containers.h"
 
+namespace mu::cloud {
+class IMuseScoreComService;
+}
 namespace mu::project {
+class IProjectConfiguration;
 class CloudScoresModel : public AbstractScoresModel, public async::Asyncable
 {
     Q_OBJECT

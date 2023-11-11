@@ -25,8 +25,10 @@
 #include "engraving/infrastructure/ifileinfoprovider.h"
 
 #include "modularity/ioc.h"
-#include "io/ifilesystem.h"
 
+namespace mu::io {
+class IFileSystem;
+}
 namespace mu::project {
 class NotationProject;
 class ProjectFileInfoProvider : public engraving::IFileInfoProvider

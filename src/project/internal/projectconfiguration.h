@@ -25,15 +25,27 @@
 #include "types/val.h"
 
 #include "modularity/ioc.h"
-#include "global/iglobalconfiguration.h"
-#include "io/ifilesystem.h"
-#include "accessibility/iaccessibilityconfiguration.h"
-#include "notation/inotationconfiguration.h"
-#include "cloud/icloudconfiguration.h"
-#include "languages/ilanguagesservice.h"
 
 #include "../iprojectconfiguration.h"
 
+namespace mu::accessibility {
+class IAccessibilityConfiguration;
+}
+namespace mu::framework {
+class IGlobalConfiguration;
+}
+namespace mu::io {
+class IFileSystem;
+}
+namespace mu::notation {
+class INotationConfiguration;
+}
+namespace mu::cloud {
+class ICloudConfiguration;
+}
+namespace mu::languages {
+class ILanguagesService;
+}
 namespace mu::project {
 class ProjectConfiguration : public IProjectConfiguration
 {

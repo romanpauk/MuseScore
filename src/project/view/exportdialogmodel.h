@@ -28,22 +28,35 @@
 
 #include "async/asyncable.h"
 
-#include "iinteractive.h"
-#include "context/iglobalcontext.h"
-#include "importexport/imagesexport/iimagesexportconfiguration.h"
-#include "importexport/musicxml/imusicxmlconfiguration.h"
-#include "importexport/midi/imidiconfiguration.h"
-#include "importexport/audioexport/iaudioexportconfiguration.h"
-#include "importexport/mei/imeiconfiguration.h"
-
-#include "inotationwritersregister.h"
-#include "iprojectconfiguration.h"
 #include "internal/iexportprojectscenario.h"
 #include "types/projecttypes.h"
 
 class QItemSelectionModel;
 
+namespace mu::iex::imagesexport {
+class IImagesExportConfiguration;
+}
+namespace mu::iex::musicxml {
+class IMusicXmlConfiguration;
+}
+namespace mu::iex::midi {
+class IMidiImportExportConfiguration;
+}
+namespace mu::iex::audioexport {
+class IAudioExportConfiguration;
+}
+namespace mu::iex::mei {
+class IMeiConfiguration;
+}
+namespace mu::context {
+class IGlobalContext;
+}
+namespace mu::framework {
+class IInteractive;
+}
 namespace mu::project {
+class INotationWritersRegister;
+class IProjectConfiguration;
 class ExportDialogModel : public QAbstractListModel, public async::Asyncable
 {
     Q_OBJECT

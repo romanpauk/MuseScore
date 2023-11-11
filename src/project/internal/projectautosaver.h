@@ -27,13 +27,17 @@
 #include "async/asyncable.h"
 
 #include "modularity/ioc.h"
-#include "context/iglobalcontext.h"
-#include "io/ifilesystem.h"
-#include "iprojectconfiguration.h"
 
 #include "../iprojectautosaver.h"
 
+namespace mu::context {
+class IGlobalContext;
+}
+namespace mu::io {
+class IFileSystem;
+}
 namespace mu::project {
+class IProjectConfiguration;
 class ProjectAutoSaver : public IProjectAutoSaver, public async::Asyncable
 {
     INJECT(context::IGlobalContext, globalContext)

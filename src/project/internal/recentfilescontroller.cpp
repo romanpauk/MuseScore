@@ -29,6 +29,7 @@
 #include "serialization/json.h"
 
 #include "multiinstances/resourcelockguard.h"
+#include "imscmetareader.h"
 
 using namespace mu::project;
 using namespace mu::async;

@@ -23,12 +23,16 @@
 #define MU_WORKSPACE_WORKSPACEACTIONCONTROLLER_H
 
 #include "modularity/ioc.h"
-#include "actions/iactionsdispatcher.h"
 #include "actions/actionable.h"
-#include "iworkspaceconfiguration.h"
-#include "iinteractive.h"
 
+namespace mu::actions {
+class IActionsDispatcher;
+}
+namespace mu::framework {
+    class IInteractive;
+}
 namespace mu::workspace {
+class IWorkspaceConfiguration;
 class WorkspaceActionController : public actions::Actionable
 {
     INJECT(actions::IActionsDispatcher, dispatcher)

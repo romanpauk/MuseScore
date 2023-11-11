@@ -21,6 +21,9 @@
  */
 #include "newscoremodel.h"
 #include "ui/view/musicalsymbolcodes.h"
+#include "project/iprojectcreator.h"
+#include "context/iglobalcontext.h"
+#include "notation/iinstrumentsrepository.h"
 #include "log.h"
 
 using namespace mu::project;

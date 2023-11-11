@@ -25,6 +25,7 @@
 #include <QTimer>
 #include <QtConcurrent>
 
+#include "iinteractive.h"
 #include "updateerrors.h"
 
 #include "translation.h"

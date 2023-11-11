@@ -25,6 +25,7 @@
 #include <QString>
 
 #include "actions/actiontypes.h"
+#include "actions/iactionsdispatcher.h"
 
 #include "types/projecttypes.h"
 

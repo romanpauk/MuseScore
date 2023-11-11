@@ -22,6 +22,7 @@
 #include "updateconfiguration.h"
 
 #include "settings.h"
+#include "iglobalconfiguration.h"
 
 using namespace mu::update;
 using namespace mu::framework;

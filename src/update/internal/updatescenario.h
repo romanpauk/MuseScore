@@ -26,15 +26,20 @@
 #include "progress.h"
 
 #include "modularity/ioc.h"
-#include "iinteractive.h"
 #include "actions/iactionsdispatcher.h"
-#include "multiinstances/imultiinstancesprovider.h"
-#include "../iupdateconfiguration.h"
-#include "../iupdateservice.h"
 
 #include "../iupdatescenario.h"
 
+namespace mu::framework {
+class IInteractive;
+}
+namespace mu::mi {
+class IMultiInstancesProvider;
+}
 namespace mu::update {
+class IUpdateConfiguration;
+class IUpdateService;
+class ReleaseInfo;
 class UpdateScenario : public IUpdateScenario, public async::Asyncable
 {
     INJECT(framework::IInteractive, interactive)

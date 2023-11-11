@@ -26,12 +26,18 @@
 
 #include "modularity/ioc.h"
 #include "iprojectconfiguration.h"
-#include "actions/iactionsdispatcher.h"
-#include "iinteractive.h"
-#include "cloud/musescorecom/imusescorecomservice.h"
 
 class QString;
 
+namespace mu::actions {
+class IActionsDispatcher;
+}
+namespace mu::cloud {
+class IMuseScoreComService;
+}
+namespace mu::framework {
+class IInteractive;
+}
 namespace mu::project {
 class ScoresPageModel : public QObject
 {

@@ -27,10 +27,10 @@
 #include "../iworkspacesdataprovider.h"
 
 #include "modularity/ioc.h"
-#include "iworkspacemanager.h"
 #include "async/asyncable.h"
 
 namespace mu::workspace {
+class IWorkspaceManager;
 class WorkspacesDataProvider : public IWorkspacesDataProvider, public async::Asyncable
 {
     INJECT(IWorkspaceManager, manager)

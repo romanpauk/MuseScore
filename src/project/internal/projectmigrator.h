@@ -25,10 +25,12 @@
 #include "iprojectmigrator.h"
 
 #include "modularity/ioc.h"
-#include "iinteractive.h"
-#include "iprojectconfiguration.h"
 
+namespace mu::framework {
+class IInteractive;
+}
 namespace mu::project {
+class IProjectConfiguration;
 class ProjectMigrator : public IProjectMigrator
 {
     INJECT(IProjectConfiguration, configuration)

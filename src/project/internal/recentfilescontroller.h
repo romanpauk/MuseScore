@@ -31,12 +31,16 @@
 #include "async/promise.h"
 
 #include "modularity/ioc.h"
-#include "iprojectconfiguration.h"
-#include "imscmetareader.h"
-#include "io/ifilesystem.h"
-#include "multiinstances/imultiinstancesprovider.h"
 
+namespace mu::io {
+class IFileSystem;
+}
+namespace mu::mi {
+class IMultiInstancesProvider;
+}
 namespace mu::project {
+class IProjectConfiguration;
+class IMscMetaReader;
 class RecentFilesController : public IRecentFilesController, public async::Asyncable
 {
     INJECT(IProjectConfiguration, configuration)

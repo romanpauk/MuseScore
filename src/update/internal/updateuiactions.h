@@ -23,13 +23,14 @@
 #define MU_UPDATE_UPDATEUIACTIONS_H
 
 #include "modularity/ioc.h"
-#include "context/iuicontextresolver.h"
 
 #include "framework/ui/iuiactionsmodule.h"
 
-#include "updateactioncontroller.h"
-
+namespace mu::context {
+class IUiContextResolver;
+}
 namespace mu::update {
+class UpdateActionController;
 class UpdateUiActions : public ui::IUiActionsModule
 {
     INJECT(context::IUiContextResolver, uicontextResolver)

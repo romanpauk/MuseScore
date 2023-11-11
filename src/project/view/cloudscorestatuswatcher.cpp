@@ -22,6 +22,8 @@
 
 #include "cloudscorestatuswatcher.h"
 
+#include "iprojectfilescontroller.h"
+
 #include "log.h"
 
 using namespace mu::project;

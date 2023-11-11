@@ -26,9 +26,8 @@
 
 #include "async/asyncable.h"
 
-#include "irecentfilescontroller.h"
-
 namespace mu::project {
+class IRecentFilesController;
 class ScoreThumbnailLoader : public QObject, public async::Asyncable
 {
     Q_OBJECT;

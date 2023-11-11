@@ -26,11 +26,13 @@
 #include "modularity/ioc.h"
 
 #include "itemplatesrepository.h"
-#include "project/iprojectconfiguration.h"
-#include "project/imscmetareader.h"
-#include "io/ifilesystem.h"
 
+namespace mu::io {
+class IFileSystem;
+}
 namespace mu::project {
+class IProjectConfiguration;
+class IMscMetaReader;
 class TemplatesRepository : public ITemplatesRepository
 {
     INJECT(IProjectConfiguration, configuration)

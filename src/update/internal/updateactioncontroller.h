@@ -25,10 +25,12 @@
 #include "actions/actionable.h"
 
 #include "modularity/ioc.h"
-#include "actions/iactionsdispatcher.h"
-#include "../iupdatescenario.h"
 
+namespace mu::actions {
+class IActionsDispatcher;
+}
 namespace mu::update {
+class IUpdateScenario;
 class UpdateActionController : public actions::Actionable
 {
     INJECT(actions::IActionsDispatcher, dispatcher)

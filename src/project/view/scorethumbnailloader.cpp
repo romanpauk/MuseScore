@@ -21,6 +21,8 @@
  */
 #include "scorethumbnailloader.h"
 
+#include "irecentfilescontroller.h"
+
 using namespace mu::project;
 
 ScoreThumbnailLoader::ScoreThumbnailLoader(QObject* parent)

@@ -26,11 +26,12 @@
 
 #include "async/asyncable.h"
 
-#include "iprojectconfiguration.h"
-#include "irecentfilescontroller.h"
-#include "io/ifilesystem.h"
-
+namespace mu::io {
+class IFileSystem;
+}
 namespace mu::project {
+class IProjectConfiguration;
+class IRecentFilesController;
 class RecentScoresModel : public AbstractScoresModel, public async::Asyncable
 {
     Q_OBJECT

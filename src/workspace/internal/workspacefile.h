@@ -26,13 +26,15 @@
 #include <map>
 #include <QByteArray>
 
-#include "io/ifilesystem.h"
 #include "modularity/ioc.h"
 #include "types/val.h"
 
 class MQZipReader;
 class MQZipWriter;
 
+namespace mu::io {
+class IFileSystem;
+}
 namespace mu::workspace {
 class WorkspaceFile
 {

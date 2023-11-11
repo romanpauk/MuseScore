@@ -25,14 +25,18 @@
 #include "async/asyncable.h"
 
 #include "modularity/ioc.h"
-#include "iinteractive.h"
 #include "network/inetworkmanagercreator.h"
-#include "io/ifilesystem.h"
-#include "../iupdateconfiguration.h"
 
 #include "../iupdateservice.h"
 
+namespace mu::framework {
+class IInteractive;
+}
+namespace mu::io {
+class IFileSystem;
+}
 namespace mu::update {
+class IUpdateConfiguration;
 class UpdateService : public IUpdateService, public async::Asyncable
 {
     INJECT(framework::IInteractive, interactive)

@@ -40,6 +40,8 @@
 
 #include "diagnostics/idiagnosticspathsregister.h"
 
+#include "iinteractive.h"
+
 using namespace mu::workspace;
 using namespace mu::modularity;
 using namespace mu::ui;

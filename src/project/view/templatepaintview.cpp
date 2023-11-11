@@ -25,6 +25,7 @@
 #include "stringutils.h"
 
 #include "notation/imasternotation.h"
+#include "shortcuts/ishortcutsregister.h"
 
 #include "log.h"
 

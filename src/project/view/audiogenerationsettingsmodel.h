@@ -25,9 +25,9 @@
 #include <QObject>
 
 #include "modularity/ioc.h"
-#include "iprojectconfiguration.h"
 
 namespace mu::project {
+class IProjectConfiguration;
 class AudioGenerationSettingsModel : public QObject
 {
     Q_OBJECT

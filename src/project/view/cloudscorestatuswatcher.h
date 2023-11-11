@@ -27,9 +27,9 @@
 #include "async/asyncable.h"
 
 #include "modularity/ioc.h"
-#include "iprojectfilescontroller.h"
 
 namespace mu::project {
+class IProjectFilesController;
 class CloudScoreStatusWatcher : public QObject, async::Asyncable
 {
     Q_OBJECT

@@ -23,11 +23,14 @@
 #define MU_PROJECT_PROJECTUIACTIONS_H
 
 #include "ui/iuiactionsmodule.h"
-#include "projectactionscontroller.h"
-#include "modularity/ioc.h"
-#include "context/iuicontextresolver.h"
 
+#include "modularity/ioc.h"
+
+namespace mu::context {
+class IUiContextResolver;
+}
 namespace mu::project {
+class ProjectActionsController;
 class ProjectUiActions : public ui::IUiActionsModule
 {
     INJECT(context::IUiContextResolver, uicontextResolver)

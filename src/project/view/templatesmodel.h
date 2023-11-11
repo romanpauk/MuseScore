@@ -23,9 +23,9 @@
 #define MU_PROJECT_TEMPLATESMODEL_H
 
 #include "modularity/ioc.h"
-#include "internal/itemplatesrepository.h"
 
 namespace mu::project {
+class ITemplatesRepository;
 class TemplatesModel : public QObject
 {
     Q_OBJECT

@@ -28,8 +28,10 @@
 #include "workspacefile.h"
 
 #include "modularity/ioc.h"
-#include "multiinstances/imultiinstancesprovider.h"
 
+namespace mu::mi {
+class IMultiInstancesProvider;
+}
 namespace mu::workspace {
 class Workspace : public IWorkspace, public async::Asyncable
 {

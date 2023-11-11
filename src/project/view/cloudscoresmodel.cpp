@@ -21,6 +21,8 @@
  */
 #include "cloudscoresmodel.h"
 
+#include "cloud/musescorecom/imusescorecomservice.h"
+#include "iprojectconfiguration.h"
 #include "dataformatter.h"
 
 #include "log.h"

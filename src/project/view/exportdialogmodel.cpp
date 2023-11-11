@@ -24,6 +24,10 @@
 #include <QApplication>
 #include <QItemSelectionModel>
 
+#include "importexport/musicxml/imusicxmlconfiguration.h"
+#include "importexport/midi/imidiconfiguration.h"
+#include "importexport/audioexport/iaudioexportconfiguration.h"
+#include "importexport/mei/imeiconfiguration.h"
 #include "async/async.h"
 #include "translation.h"
 #include "log.h"

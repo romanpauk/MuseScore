@@ -23,9 +23,12 @@
 #ifndef PROJECTPROPERTIESMODEL_H
 #define PROJECTPROPERTIESMODEL_H
 
-#include "iinteractive.h"
-#include "context/iglobalcontext.h"
-
+namespace mu::context {
+class IGlobalContext;
+}
+namespace mu::framework {
+class IInteractive;
+}
 namespace mu::project {
 class ProjectPropertiesModel : public QAbstractListModel
 {

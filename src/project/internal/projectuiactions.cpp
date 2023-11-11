@@ -21,6 +21,8 @@
  */
 #include "projectuiactions.h"
 
+#include "context/uicontext.h"
+#include "projectactionscontroller.h"
 #include "types/translatablestring.h"
 
 using namespace mu::project;

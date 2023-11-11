@@ -26,11 +26,13 @@
 
 #include "modularity/ioc.h"
 #include "async/asyncable.h"
-#include "../iworkspaceconfiguration.h"
-#include "io/ifilesystem.h"
 #include "workspace.h"
 
+namespace mu::io {
+class IFileSystem;
+}
 namespace mu::workspace {
+class IWorkspaceConfiguration;
 class WorkspaceManager : public IWorkspaceManager, public async::Asyncable
 {
     INJECT(IWorkspaceConfiguration, configuration)

@@ -26,11 +26,11 @@
 #include <QObject>
 
 #include "modularity/ioc.h"
-#include "iupdateservice.h"
 
 #include "async/asyncable.h"
 
 namespace mu::update {
+class IUpdateService;
 class UpdateModel : public QObject, public async::Asyncable
 {
     Q_OBJECT
